@@ -146,7 +146,7 @@ body {
 .link {
   padding-top: 32px;
   padding-bottom: 32px;
-  transition: color 250ms linear;
+  transition: color 250ms cubic-bezier(0.6, 0.04, 0.98, 0.335);
   position: relative;
 }
 
@@ -440,7 +440,8 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: color 250ms linear, background-color 250ms linear;
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .comand-social-icon {
   fill: #afb1b8;
@@ -513,7 +514,8 @@ body {
   border-color: #afb1b8;
   border-radius: 4px;
   color: #afb1b8;
-  transition: color 250ms linear, border-color 250ms linear;
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    border-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .customers-icon:hover,
 .customers-icon:focus {
@@ -620,7 +622,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: background-color 250ms linear;
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
 }
 
@@ -652,6 +654,9 @@ body {
   line-height: 1.62;
   color: var(--third-tex-color);
   border-radius: 4px;
+  transition: color 250ms cubic-bezier(0.6, 0.04, 0.98, 0.335),
+    background-color 250ms cubic-bezier(0.6, 0.04, 0.98, 0.335);
+  position: relative;
 }
 .btn-color .blue-btn:hover {
   background-color: var(--fifeth-text-color);
@@ -732,8 +737,12 @@ body {
 .img-items {
   background: #ffffff;
   border: 1px solid #eeeeee;
-  box-sizing: content-box;
+  transition: box-shadow 250ms cubic-bezier(0.6, 0.04, 0.98, 0.335);
+  position: relative;
 }
+.img-items-links {
+}
+
 .overlay {
   position: relative;
   overflow: hidden;
@@ -749,8 +758,6 @@ body {
 .img-items:hover,
 .img-items:focus {
   background: #ffffff;
-  border: 1px solid #eeeeee;
-  box-sizing: border-box;
   box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.12), 0px 4px 4px rgba(0, 0, 0, 0.06),
     1px 4px 6px rgba(0, 0, 0, 0.16);
 }
@@ -784,7 +791,17 @@ body {
   background-color: rgba(0, 0, 0, 0.2);
   position: fixed;
   top: 0;
+  transition: opacity 400ms, visibility 400ms;
 }
+.backdrop.is-hidden .modal {
+  transform: scaleY(-0.1) rotate(150deg);
+  transition: transform 400ms;
+}
+/*.backdrop.is-hidden .modal::after {
+  transform: scaleY(0) rotate(150deg);
+  transition: transform 400ms;
+}
+*/
 .modal {
   min-height: 581px;
   width: 528px;
@@ -793,7 +810,9 @@ body {
   position: absolute;
   top: 50%;
   left: 50%;
+  transform: scale(-0.1) rotate(180deg);
   transform: translate(-50%, -50%);
+  transition: transform 400ms;
 }
 
 .modal-close {
@@ -809,7 +828,7 @@ body {
   align-items: center;
   justify-content: center;
 }
-.is-hidder {
+.is-hidden {
   visibility: hidden;
   opacity: 0;
   pointer-events: none;
